@@ -1,0 +1,5 @@
+{
+  "name": "PostureAI",
+  "description": "Premium AI-powered fitness and posture correction application with real-time biometric tracking simulation.",
+  "requestFramePermissions": ["camera"]
+}
