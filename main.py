@@ -8,6 +8,8 @@ import mediapipe as mp
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse, StreamingResponse
 import uvicorn
+from auth_api import setup_auth
+
 
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
@@ -284,6 +286,7 @@ def _mjpeg_generator():
 
 
 app = FastAPI()
+setup_auth(app)
 
 
 @app.on_event("startup")

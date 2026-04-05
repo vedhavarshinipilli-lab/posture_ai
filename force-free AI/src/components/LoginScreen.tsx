@@ -2,7 +2,13 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { NeonButton } from './UI';
 
-export const LoginScreen = ({ onStart }: { onStart: () => void }) => {
+export const LoginScreen = ({
+  onStart,
+  onAccountPortal,
+}: {
+  onStart: () => void;
+  onAccountPortal?: () => void;
+}) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 relative overflow-hidden">
       {/* Background Glows */}
@@ -25,6 +31,16 @@ export const LoginScreen = ({ onStart }: { onStart: () => void }) => {
         <NeonButton onClick={onStart}>
           START SESSION
         </NeonButton>
+
+        {onAccountPortal && (
+          <button
+            type="button"
+            onClick={onAccountPortal}
+            className="mt-8 text-xs uppercase tracking-[0.25em] text-slate-500 hover:text-cyan-400/90 transition-colors"
+          >
+            Sign in / Register
+          </button>
+        )}
       </motion.div>
 
       <div className="absolute bottom-8 text-slate-600 text-[10px] uppercase tracking-widest">

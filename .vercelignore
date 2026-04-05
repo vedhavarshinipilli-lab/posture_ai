@@ -1,0 +1,5 @@
+venv/
+main.py
+auth_api.py
+requirements.txt
+*.db

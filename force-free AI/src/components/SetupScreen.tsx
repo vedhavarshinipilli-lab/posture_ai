@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { GlassCard, NeonButton } from './UI';
-import { ChevronLeft, Plus, Minus, Dumbbell, Activity } from 'lucide-react';
+import { ChevronLeft, Plus, Minus, Activity, UserCircle2 } from 'lucide-react';
 
 export const SetupScreen = ({ 
   onBack, 
-  onStart 
+  onStart,
+  onAccountPortal,
 }: { 
   onBack: () => void, 
-  onStart: (exercise: string, sets: number, reps: number) => void 
+  onStart: (exercise: string, sets: number, reps: number) => void,
+  onAccountPortal?: () => void,
 }) => {
   const [exercise, setExercise] = useState('Squat');
   const [sets, setSets] = useState(4);
@@ -21,7 +23,18 @@ export const SetupScreen = ({
           <ChevronLeft className="w-6 h-6" />
         </button>
         <h2 className="text-2xl font-bold font-headline tracking-tight">Setup <span className="text-cyan-400">Session</span></h2>
-        <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10" />
+        {onAccountPortal ? (
+          <button
+            type="button"
+            onClick={onAccountPortal}
+            title="Account"
+            className="p-2 rounded-full bg-slate-800 border border-white/10 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-colors"
+          >
+            <UserCircle2 className="w-6 h-6 text-cyan-400/90" />
+          </button>
+        ) : (
+          <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10" />
+        )}
       </header>
 
       <main className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">

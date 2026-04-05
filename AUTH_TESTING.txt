@@ -1,0 +1,28 @@
+Auth API testing (FastAPI on port 8000, frontend on port 3000)
+
+1) Start backend:
+   py -3.10 main.py
+
+2) Start frontend (from "force-free AI" folder):
+   npm run dev
+
+3) Open http://127.0.0.1:3000 — click "Sign in / Register", choose role, register, then log in.
+
+Sample flow (via UI or curl):
+
+Register a doctor:
+  curl -X POST http://127.0.0.1:8000/register ^
+    -H "Content-Type: application/json" ^
+    -d "{\"email\":\"doc@test.com\",\"password\":\"docpass1\",\"role\":\"doctor\"}"
+
+Register a user:
+  curl -X POST http://127.0.0.1:8000/register ^
+    -H "Content-Type: application/json" ^
+    -d "{\"email\":\"user@test.com\",\"password\":\"userpass1\",\"role\":\"user\"}"
+
+Login (role must match registration):
+  curl -X POST http://127.0.0.1:8000/login ^
+    -H "Content-Type: application/json" ^
+    -d "{\"email\":\"doc@test.com\",\"password\":\"docpass1\",\"role\":\"doctor\"}"
+
+Users are stored in users.db (SQLite) next to main.py.
